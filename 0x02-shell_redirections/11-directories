@@ -1,2 +1,2 @@
 #!/bin/bash
-count ./
+find ./ -type d -print | wc -l
