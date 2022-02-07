@@ -1,0 +1,1 @@
+This is the folder for the project 0x02-shell_redirections.
