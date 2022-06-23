@@ -4,7 +4,7 @@ var="school"
 if [ -e "$var" ]
 then
     echo "$var file exists"
-    if [ -n "$var" ]
+    if [ -s "$var" ]
     then
         echo "$var file is not empty"
     else
