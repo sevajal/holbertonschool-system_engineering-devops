@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Script that gives you information about the school file.
+var="school"
+if [ -e "$var" ]
+then
+    echo "$var file exists"
+    if [ -n "$var" ]
+    then
+        echo "$var file is not empty"
+    else
+        echo "$var file is empty"
+    fi
+    if [ -f "$var" ]
+    then
+        echo "$var is a regular file"
+    fi
+else
+    echo "$var file does not exist"
+fi
