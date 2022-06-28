@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script that displays all active IPv4 IPs on the machine it’s executed on.
+echo "$(hostname -I)" | while read -r -d " " ips
+do
+    printf "%s\n" "$ips"
+done
