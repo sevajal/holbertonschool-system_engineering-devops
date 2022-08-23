@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # script to connect to a server without typing a password.
-ssh-copy-id -i ~/.ssh/school ubuntu@54.160.169.188
+eval "$(ssh-agent)"
+ssh-add
