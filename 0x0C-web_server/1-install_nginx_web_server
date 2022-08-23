@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # script to install nginx web server.
-sudo apt-get update
+sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo touch /var/www/html/index.html
 sudo chown -R "$USER":"$USER" /var/www//html/index.html 
