@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # script that transfers a file from our client to a server.
 #./0-transfer_file some_page.html 54.160.169.188 ubuntu ~/.ssh/school.pub
-if [ $# -lt 4 ]
+if [ $# -eq 4 ]
 then
-    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
-else
     file=$1
     ip=$2
     user=$3
     ssh_path=$4
-    scp -i "$ssh_path" "$file" "$user"@"$ip":
+    scp -i "$ssh_path" "$file" "$user"@"$ip":~/
+else
+    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
 fi
