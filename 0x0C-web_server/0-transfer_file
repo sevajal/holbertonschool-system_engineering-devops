@@ -9,5 +9,5 @@ else
     ip=$2
     user=$3
     ssh_path=$4
-    scp -i "$ssh_path" "$file" "$user"@"$ip":~/
+    scp -i "$ssh_path" "$file" "$user"@"$ip"
 fi
