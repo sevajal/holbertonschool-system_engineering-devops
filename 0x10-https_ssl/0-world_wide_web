@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Script that displays information about subdomains.
+f_record () {
+    dig +noall +answer "$1" | awk '{ print $4 }'
+}
+f_destination () {
+    dig +noall +answer "$1" | awk '{ print $5 }'
+}
+if [ $# -eq 2 ]
+then
+    input="$2.$1"
+    record="$(f_record "$input")"
+    ip="$(f_destination "$input")"
+    echo "The subdomain ""$2"" is a ""$record"" record and points to ""$ip"""
+elif [ $# -eq 1 ]
+then
+    input_www="www.$1"
+    input_lb01="lb-01.$1"
+    input_web01="web-01.$1"
+    input_web02="web-02.$1"
+    record="$(f_record "$input_www")"
+    ip="$(f_destination "$input_www")"
+    echo "The subdomain www is a ""$record"" record and points to ""$ip"""
+    record="$(f_record "$input_lb01")"
+    ip="$(f_destination "$input_lb01")"
+    echo "The subdomain lb-01 is a ""$record"" record and points to ""$ip"""
+    record="$(f_record "$input_web01")"
+    ip="$(f_destination "$input_web01")"
+    echo "The subdomain web-01 is a ""$record"" record and points to ""$ip"""
+    record="$(f_record "$input_web02")"
+    ip="$(f_destination "$input_web02")"
+    echo "The subdomain web-02 is a ""$record"" record and points to ""$ip"""
+fi
+
+
+func_destination () {
+    dig "$1" | grep -A1 'ANSWER SECTION:'
+}
