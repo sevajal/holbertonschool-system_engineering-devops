@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Configure the Nginx server so /redirect_me is redirecting to another page.
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo touch /var/www/html/index.html
+sudo chown -R "$USER":"$USER" /var/www//html/index.html 
+echo "Hello World" > /var/www/html/index.html
+sudo touch /var/www/html/error404.html
+sudo chown ubuntu /var/www/html/error404.html
+echo "Ceci n'est pas une page" > /var/www/html/error404.html
+sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.mocionesdevida.com permanent;\n\terror_page 404 \/error404.html;\n\tlocation = \/error404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
+service nginx start
+#To restart: sudo nginx -t
+#sudo service nginx reload.
