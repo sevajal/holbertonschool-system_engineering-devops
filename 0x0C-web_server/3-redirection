@@ -5,5 +5,6 @@ sudo apt-get -y install nginx
 sudo touch /var/www/html/index.html
 sudo chown -R "$USER":"$USER" /var/www//html/index.html 
 echo "Hello World" > /var/www/html/index.html
-sed -i "/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.mocionesdevida.com permanent;/" /etc/nginx/sites-available/default
+sudo chown ubuntu /etc/nginx/sites-available/default
+sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.mocionesdevida.com permanent;/" /etc/nginx/sites-available/default
 service nginx start
