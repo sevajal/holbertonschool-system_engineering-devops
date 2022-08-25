@@ -11,5 +11,3 @@ echo "Ceci n'est pas une page" > /var/www/html/error404.html
 sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.mocionesdevida.com permanent;\n\terror_page 404 \/error404.html;\n\tlocation = \/error404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}/" /etc/nginx/sites-available/default
 sudo sed -i "s/http {/http {\n\tadd_header X-Served-By $HOSTNAME;\n/" /etc/nginx/nginx.conf
 service nginx start
-sudo nginx -t
-sudo service nginx reload
