@@ -1,11 +1,11 @@
 # Manifest to install Nginx web server.
 package { 'nginx':
-  ensure => 'installed',
+  ensure => installed,
 }
 
 service { 'nginx':
-  ensure => 'running',
-  require => 'package['nginx']',
+  ensure => running,
+  require => Package['nginx'],
 }
 
 file { '/var/www/html/index.html':
@@ -13,7 +13,7 @@ file { '/var/www/html/index.html':
 }
 
 file_line { 'redirection':
-  ensure => 'present',
+  ensure => present,
   path   => '/etc/nginx/sites-available/default',
   line   => 'rewrite ^/redirect_me https://www.mocionesdevida.com permanent;',
   after  => 'server_name _;',
