@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Script to install a load balancer.
 sudo apt-get -y install haproxy
-sudo sed -i "s/504.http/504.http\n\nlisten firstbalance\n\tbind *:80\n\tmode http\n\tbalance roundrobin\n\tserver 4574-web-01 54.160.169.188:80 check\n\tserver 4574-web-02 54.209.165.164:80 check\n/" /etc/haproxy/haproxy.cfg
+sudo sed -i "s/504.http/504.http\n\nfrontend http_front\n\tbind *:80\n\tmode http\n\tdefault_backend web-backend\n\nbackend web-backend\n\tbalance roundrobin\n\tserver 4574-web-01 54.160.169.188:80 check\n\tserver 4574-web-02 54.209.165.164:80 check\n/" /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
