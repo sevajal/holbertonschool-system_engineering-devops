@@ -1,5 +1,9 @@
 # Manifest to connect to a server without typing a password.
+file { '/etc/ssh/ssh_config':
+  ensure => 'present',
+}
 exec { 'SSH client configuration':
-  command => [ 'eval "$(ssh-agent)"', 'ssh-add' ],
-  path    => [ '/bin', '/sbin' ],
+  command  => 'echo "  IdentityFile ~/-ssh/school\n  PasswordAuthentication no" >> /etc/ssh/ssh_config',
+  path     => [ '/bin', '/sbin' ],
+  provider => 'shell',
 }
