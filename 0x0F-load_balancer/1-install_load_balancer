@@ -6,8 +6,6 @@ sudo echo "
 listen firstbalance
     bind *:80
     balance roundrobin
-    option forwardfor
-    option httpchk
-    server 4574-web-01 54.160.169.188:80
-    server 4574-web-02 54.209.165.164:80" | sudo tee -a /etc/haproxy/haproxy.cfg
+    server 4574-web-01 54.160.169.188:80 check
+    server 4574-web-02 54.209.165.164:80 check" | sudo tee -a /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
