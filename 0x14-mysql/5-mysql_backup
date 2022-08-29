@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script to create a backup.
+mysqldump --all-databases --single-transaction --quick --lock-tables=false > backup.sql -u root -p$1
+tar cfz $(date +"%d-%m-%Y").tar.gz backup.sql
