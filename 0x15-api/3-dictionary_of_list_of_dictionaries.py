@@ -6,13 +6,13 @@ import requests
 
 if __name__ == "__main__":
     dict_usernames = {}
-    r_user = requests.get(f'https://jsonplaceholder.typicode.com/users/')
+    r_user = requests.get('https://jsonplaceholder.typicode.com/users/')
     r_user = r_user.json()
     for user in r_user:
         id = user['id']
         dict_usernames[user['id']] = user['username']
     dictionary = {}
-    r_todos = requests.get(f'https://jsonplaceholder.typicode.com/todos/')
+    r_todos = requests.get('https://jsonplaceholder.typicode.com/todos/')
     r_todos = r_todos.json()
     for id, username in dict_usernames.items():
         dictionary[id] = []
